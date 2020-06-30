@@ -1,5 +1,5 @@
   
-var x values = {
+var nameor = {
   postMessage: function (message) {
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(message);
