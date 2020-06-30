@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			text: title
 		},
 		xAxis: {
-			dataX: [],
+			dataX: ['dataX'],
 			title: {
 				text: 'Time (cumulative )',
 				style: {
@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			startOnTick: true,
 			endOnTick: true
 		},
+		
+		
+		
 		yAxis: {
 			gridLineWidth: 0,
 			plotLines: [{
@@ -110,28 +113,7 @@ get_line_intersection = function(p0,p1,p2,p3){
 	}
 	return false;
 }
-</script>
-<style>
-#areaChart{
-	width: 768px;
-}
-</style>
-</head>
-<body>
-<div id="areaChart"></div>
-
-		
-<script>
 	
-    var chart = c3.generate({
-      bindto: 'areaChart',
-      data: {
-        columns: [
-          ['data'],
-        ]
-      }
-    });
-		   
 // when we get a message from the app, display it on the page
 // message should be a JSON string of a list of numbers
 //I think there is a way to change the legend titles. I dont want the trend title to show at all. EVER
@@ -143,8 +125,8 @@ var titleName = messageList.title
 document.getElementById(‘messageDisplay’).innerHTML = “This chart is for “ + messageList.title;
 chart.load({
 columns: [
+[‘dataX’].concat(messageList.dataX)
 [‘dataY’].concat(messageList.dataY),
-[‘dataX’].concat(messageList.dataX),
 ],
 names: {
 data1: titleName
@@ -155,7 +137,15 @@ console.error(“An error occurred. Message probably wasn’t a JSON string of a
 }
 });
 	
-</script>
+</script>		
 	
+<style>
+#areaChart{
+	width: 768px;
+}
+</style>
+</head>
+<body>
+<div id="areaChart"></div>
 </body>
 </html>
