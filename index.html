@@ -131,8 +131,8 @@ var titleName = messageList.title
 document.getElementById(‘messageDisplay’).innerHTML = “This chart is for “ + messageList.title;
 chart.load({
 columns: [
-[‘dataY’].concat(messageList.data),
-[‘dataX’].concat(messageList.data),
+[‘dataY’].concat(messageList.dataY),
+[‘dataX’].concat(messageList.dataX),
 ],
 names: {
 data1: titleName
