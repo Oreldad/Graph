@@ -127,40 +127,31 @@ get_line_intersection = function(p0,p1,p2,p3){
 <div id="areaChart"></div>
 	
 
-	
- <script>
+    <script>
     var chart = c3.generate({
-      bindto: '#areaChart',
+      bindto: '#chart',
       data: {
         columns: [
-          ['dataX'],
+          ['data1'],
         ]
       }
-    });	
+    });
 
-	
-	 // when we get a message from the app, display it on the page
+    // when we get a message from the app, display it on the page
     // message should be a JSON string of a list of numbers
-ThunkableWebviewerExtension.receiveMessage(function(message) {
-
-try {
-var messageList = JSON.parse(message);
-var titleName = messageList.title
-document.getElementById(‘messageDisplay’).innerHTML = “This chart is for “ + messageList.title;
-chart.load({
-columns: [
-[‘dataX’].concat(messageList.dataX),
-],
-names: {
-data1: titleName
-}
-});
-} catch (e) {
-console.error(“An error occurred. Message probably wasn’t a JSON string of an array of numbers”);
-}
-});
-	
-</script>	
+    ThunkableWebviewerExtension.receiveMessage(function(message) {
+      try {
+        var messageList = JSON.parse(message);
+        chart.load({
+          columns: [
+            ['data1'].concat(messageList),
+          ]
+        });        
+      } catch (e) {
+        console.error("An error occurred. Message probably wasn't a JSON string of an array of numbers");
+      }
+    });
+    </script>
 	
 </body>
 </html>
