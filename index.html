@@ -115,6 +115,29 @@ get_line_intersection = function(p0,p1,p2,p3){
 }
 	
 
+	
+	
+<style>
+#areaChart{
+	width: 768px;
+}
+</style>
+</head>
+<body>
+<div id="areaChart"></div>
+	
+
+	
+ <script>
+    var chart = c3.generate({
+      bindto: '#chart',
+      data: {
+        columns: [
+          ['dataX'],
+        ]
+      }
+    });	
+	
 ThunkableWebviewerExtension.receiveMessage(function(message) {
 try {
  
@@ -123,8 +146,7 @@ var titleName = messageList.title
 document.getElementById(‘messageDisplay’).innerHTML = “This chart is for “ + messageList.title;
 chart.load({
 columns: [
-[‘dataX’].concat(messageList.dataX)
-[‘dataY’].concat(messageList.dataY),
+[‘dataX’].concat(messageList.dataX),
 ],
 names: {
 data1: titleName
@@ -135,15 +157,7 @@ console.error(“An error occurred. Message probably wasn’t a JSON string of a
 }
 });
 	
-</script>		
+</script>	
 	
-<style>
-#areaChart{
-	width: 768px;
-}
-</style>
-</head>
-<body>
-<div id="areaChart"></div>
 </body>
 </html>
