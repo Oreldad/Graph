@@ -120,20 +120,28 @@ get_line_intersection = function(p0,p1,p2,p3){
 <body>
 <div id="areaChart"></div>
 	
-  // when we get a message from the app, display it on the page
-    // message should be a JSON string of a list of numbers
-    ThunkableWebviewerExtension.receiveMessage(function(message) {
-      try {
-        var messageList = JSON.parse(message);
-        chart.load({
-          columns: [
-            ['data1'].concat(messageList),
-          ]
-        });        
-      } catch (e) {
-        console.error("An error occurred. Message probably wasn't a JSON string of an array of numbers");
-      }
-    });
+// when we get a message from the app, display it on the page
+// message should be a JSON string of a list of numbers
+//I think there is a way to change the legend titles. I dont want the trend title to show at all. EVER
+ThunkableWebviewerExtension.receiveMessage(function(message) {
+try {
+ 
+var messageList = JSON.parse(message);
+var titleName = messageList.title
+document.getElementById(‘messageDisplay’).innerHTML = “This chart is for “ + messageList.title;
+chart.load({
+columns: [
+[‘X values’].concat(messageList.x),
+[‘Y values’].concat(messageList.data),
+],
+names: {
+data1: titleName
+}
+});
+} catch (e) {
+console.error(“An error occurred. Message probably wasn’t a JSON string of an array of numbers”);
+}
+});
 	
 </body>
 </html>
