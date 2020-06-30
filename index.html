@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			text: title
 		},
 		xAxis: {
-			categories: [],
+			dataX: [],
 			title: {
 				text: 'Time (cumulative )',
 				style: {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		series: [
 		{
 			name: 'Profit',
-			data: [],
+			dataY: [],
 			color: 'rgb(23,165,128)',
 			fillColor: 'rgb(177,230,216)',
 			negativeColor: 'rgb(223,77,77)',
@@ -131,8 +131,8 @@ var titleName = messageList.title
 document.getElementById(‘messageDisplay’).innerHTML = “This chart is for “ + messageList.title;
 chart.load({
 columns: [
-[‘Profit’].concat(messageList.data),
-[‘categories’].concat(messageList.data),
+[‘dataY’].concat(messageList.data),
+[‘dataX’].concat(messageList.data),
 ],
 names: {
 data1: titleName
