@@ -137,10 +137,13 @@ get_line_intersection = function(p0,p1,p2,p3){
         ]
       }
     });	
+
 	
+	 // when we get a message from the app, display it on the page
+    // message should be a JSON string of a list of numbers
 ThunkableWebviewerExtension.receiveMessage(function(message) {
+
 try {
- 
 var messageList = JSON.parse(message);
 var titleName = messageList.title
 document.getElementById(‘messageDisplay’).innerHTML = “This chart is for “ + messageList.title;
