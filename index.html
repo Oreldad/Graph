@@ -120,15 +120,14 @@ get_line_intersection = function(p0,p1,p2,p3){
 <body>
 <div id="areaChart"></div>
 	
-	
-	  // when we get a message from the app, display it on the page
+  // when we get a message from the app, display it on the page
     // message should be a JSON string of a list of numbers
-    nameor.receiveMessage(function(message) {
+    ThunkableWebviewerExtension.receiveMessage(function(message) {
       try {
         var messageList = JSON.parse(message);
         chart.load({
           columns: [
-            ['data'].concat(messageList),
+            ['data1'].concat(messageList),
           ]
         });        
       } catch (e) {
