@@ -20,7 +20,7 @@
 					}
 				},
 				title: {
-					text: title
+					text: data
 				},
 				xAxis: {
 					categories: [categories],
@@ -71,7 +71,7 @@
 				},
 				series: [{
 					name: 'רווח מצטבר',
-					data: [data],
+					data: [dataSet],
 					color: 'rgb(23,165,128)',
 					fillColor: 'rgb(177,230,216)',
 					negativeColor: 'rgb(223,77,77)',
@@ -85,10 +85,10 @@
 					var messageList = JSON.parse(message);
 					chart.update({
 						title: {
-							data: messageList.title
+							data: messageList.dataSet
 						},
 						series: {
-							data: messageList.dataSet
+							dataSet: messageList.dataSet
 						},
 						xAxis: {
 							categories: messageList.categories
@@ -108,7 +108,7 @@
 	</script>
 	<style>
 		#areaChart {
-			width: 100%;
+			width: 800pxl;
 		}
 	</style>
 </head>
