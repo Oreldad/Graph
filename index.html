@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Area Chart</title>
 	<script type="text/javascript"
-		src="https://oreldad.github.io/Graph/index.js"></script>
+		src="https://thunkable.github.io/webviewer-extension/thunkableWebviewerExtension.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script type="text/javascript">
 		var title = '';
@@ -23,7 +23,7 @@
 					text: title
 				},
 				xAxis: {
-					categories: [4, 7, 13, 23, 25, 35, 42, 50, 80],
+					categories: [],
 					title: {
 						text: 'שעות משחק',
 						style: {
@@ -71,7 +71,7 @@
 				},
 				series: [{
 					name: 'רווח מצטבר',
-					data: [100, 234, 29, -50, -200, 100, 900, -1000, 500, -1000],
+					data: [],
 					color: 'rgb(23,165,128)',
 					fillColor: 'rgb(177,230,216)',
 					negativeColor: 'rgb(223,77,77)',
@@ -83,19 +83,30 @@
 			ThunkableWebviewerExtension.receiveMessage(function (message) {
 				try {
 					var messageList = JSON.parse(message);
+					var arr = [];
+					for(var i = 0; i<messageList.dataSet.length; i++ ){
+						console.log(messageList.dataSet[i]);
+						arr.push(parseInt(messageList.dataSet[i]));
+					}
 					chart.update({
 						title: {
-							text: messageList.title
+							text: messageList.chartTitle
 						},
-						series: {
-							data: messageList.dataSet
-						},
+						series: [{
+							name: 'רווח מצטבר',
+							data: arr,
+							color: 'rgb(23,165,128)',
+							fillColor: 'rgb(177,230,216)',
+							negativeColor: 'rgb(223,77,77)',
+							negativeFillColor: 'rgb(254,169,176)',
+							showInLegend: false
+						}],
 						xAxis: {
 							categories: messageList.categories
 						},
 						tooltip: {
 							formatter: function () {
-								return '<b style="text-align:center;display:block">' + messageList.title + '</b><span style="margin-right: 15px">' + (this.y < 0 ? '-$' + Math.abs(this.y) : '$' + this.y) + '</span><span>' + this.x + '</span>'
+								return '<b style="text-align:center;display:block">' + messageList.chartTitle + '</b><span style="margin-right: 15px">' + (this.y < 0 ? '-$' + Math.abs(this.y) : '$' + this.y) + '</span><span>' + this.x + '</span>'
 							}
 						}
 					});
