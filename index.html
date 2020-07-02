@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Area Chart</title>
 	<script type="text/javascript"
-		src="https://oreldad.github.io/graph/index.js"></script>
+		src="https://oreldad.github.io/Graph/index.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script type="text/javascript">
 		var title = '';
@@ -23,7 +23,7 @@
 					text: title
 				},
 				xAxis: {
-					categories: ['categories'],
+					categories: [4, 7, 13, 23, 25, 35, 42, 50, 80],
 					title: {
 						text: 'שעות משחק',
 						style: {
@@ -71,7 +71,7 @@
 				},
 				series: [{
 					name: 'רווח מצטבר',
-					data: ['data'],
+					data: [100, 234, 29, -50, -200, 100, 900, -1000, 500, -1000],
 					color: 'rgb(23,165,128)',
 					fillColor: 'rgb(177,230,216)',
 					negativeColor: 'rgb(223,77,77)',
@@ -108,7 +108,7 @@
 	</script>
 	<style>
 		#areaChart {
-			width: 100%;
+			width: 768px;
 		}
 	</style>
 </head>
